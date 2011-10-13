@@ -4,19 +4,26 @@
  * @package	frontbase
  *
  * @author	Matěj Šimek
- * @license	?
+ * @license	commercial
  * @version	draft
  *
  */
 
 
-@import "bootstrap"; /* HTML5 Reset & Global environment settings */
+/* LESS libraries and frameworks initialization */
+@import "../libs/bootstrap/lib/bootstrap"; 		/* Twitter Bootstrap */
+// @import "../libs/HelpLess/helpless.1.0.0.less"; /* HelpLess library @TODO Decide if this library is necessary anymore with Twitter Bootsrap (a lot of duplicates) */
+@import "variables"; 							/* Global variables and colors, tw bootstrap overwrite */
+@import "mixins"; 								/* Global classes to happier and faster coding */
 
-// @import "classes"; /* Global classes */
-// @import "globals"; /* Global variables and elements */
-// @import "helpers"; /* Helper classes */
-// @import "errors"; /* Helper classes */
-// @import "typography"; /* Typography set */
+@import "typography"; 							/* Custom overwrite of default typography */
+@import "forms"; 								/* Custom overwrite of default form elements */
 
-// @import "layout"; /* Page layout (header, content, footer) */
-// @import "colors"; /* Color palette */
+/* Page layout */
+@import "layout"; 
+
+/* Basic styles */
+@import "basic";
+
+/* Components */
+@import "components/exampleComponent.less";

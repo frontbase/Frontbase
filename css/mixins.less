@@ -1,0 +1,66 @@
+/**
+ * "Mixins" - Global classes to happier and faster coding
+ *
+ * @package	frontbase.mixins
+ *
+ * @author	Matěj Šimek
+ * @license	commercial
+ * @version	draft
+ *
+ */
+
+ /* Classes included in Twitter bootstrap already
+
+.clearfix()											// Clearfix for clearing floats like a boss h5bp.com/q
+.center-block()										// Center-align a block level element
+.size(@height: 5px, @width: 5px)					// Sizing shortcuts
+.square(@size: 5px)
+.placeholder(@color: @grayLight)					// Input placeholder text
+
+#font { 											// Font Stacks
+	.shorthand(@weight: normal, @size: 14px, @lineHeight: 20px) 
+	.sans-serif(@weight: normal, @size: 14px, @lineHeight: 20px)
+	.serif(@weight: normal, @size: 14px, @lineHeight: 20px) 
+	.monospace(@weight: normal, @size: 12px, @lineHeight: 20px)
+}
+.fixed-container() 									// Grid System
+.columns(@columnSpan: 1)
+.offset(@columnOffset: 1)
+.gridColumn()										// Necessary grid styles for every column to make them appear next to each other horizontally
+.makeColumn(@columnSpan: 1)							// makeColumn can be used to mark any element (e.g., .content-primary) as a column without changing markup to .span something
+.border-radius(@radius: 5px)						// Border Radius
+.box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25))		// Drop shadows
+.transition(@transition) 							// Transitions
+.background-clip(@clip) 							// Background clipping
+.content-columns(@columnCount, @columnGap: 20px)	// CSS3 Content Columns
+
+#translucent {										// Add an alphatransparency value to any background or border color (via Elyse Holladay)
+	.background(@color: @white, @alpha: 1) 
+	.border(@color: @white, @alpha: 1) 
+}
+.gradientBar(@primaryColor, @secondaryColor) 		// Gradient Bar Colors for buttons and allerts
+
+#gradient {											// Gradients
+	.horizontal (@startColor: #555, @endColor: #333) 
+	.vertical (@startColor: #555, @endColor: #333) 
+	.directional (@startColor: #555, @endColor: #333, @deg: 45deg) 
+	.vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 50%, @endColor: #c3325f)
+}
+.reset-filter() 									// Reset filters for IE
+.opacity(@opacity: 100) 							// Opacity
+
+*/
+
+#reset {
+	.all(){
+		width: auto; height: auto; 
+		margin: 0; padding: 0; border: 0; 
+		background: none; color: inherit;
+		font-weight: normal; font-style: normal; font-size: 100%; line-height: 1; font-family: inherit;
+	}
+	.light(){
+		margin: 0; padding: 0; border: 0; 
+		font-weight: normal; font-style: normal; font-size: 100%; line-height: 1; font-family: inherit;
+	}
+	// @TODO
+}

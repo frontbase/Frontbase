@@ -1,0 +1,23 @@
+{
+  "name": "Frontbase",
+  "version": "0.0.0",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.4",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-sass": "~0.5.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-styleguide": "~0.2.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Clevis/Frontbase.git"
+  },
+  "author": "Clevis s.r.o. | Matej Simek",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/Clevis/Frontbase/issues"
+  }
+}

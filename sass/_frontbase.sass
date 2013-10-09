@@ -1,0 +1,75 @@
+/*!
+	Frontbase by Clevisaci
+	- a starter fuel for web projects */
+
+// Typography
+$font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif !default
+$font-family-serif:       Georgia, Cambria, "Times New Roman", Times, serif !default
+$font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace !default
+$font-family-base:        $font-family-sans-serif !default
+
+html
+	-webkit-overflow-scrolling: touch
+	-webkit-tap-highlight-color: rgba(0,0,0,0)
+body
+	font-family: $font-family-base
+	overflow-y: scroll
+
+// IE10 Metro responsive
+// Required for Windows 8 Metro split-screen snapping with IE10
+// Source: http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
+@-ms-viewport
+	width: device-width
+
+// IE10 on Windows Phone 8
+// IE10 on WP8 doesn't report CSS pixels, but actual device pixels. In
+// other words, say on a Lumia, you'll get 768px as the device width,
+// meaning users will see the tablet styles and not phone styles.
+// Source: http://timkadlec.com/2013/01/windows-phone-8-and-device-width/
+@media screen and (max-width: 400px)
+	@-ms-viewport
+		width: 320px
+
+// Layout breakpoints
+$screen-break0: em(320)
+$screen-break1: em(480)
+$screen-break2: em(768)
+$screen-break3: em(992)
+$screen-break4: em(1200)
+
+$screen: "only screen"
+
+$break0: "only screen and (min-width:"#{$screen-break0}")"
+$break1: "only screen and (min-width:"#{$screen-break1}")"
+$break2: "only screen and (min-width:"#{$screen-break2}")"
+$break3: "only screen and (min-width:"#{$screen-break3}")"
+$break4: "only screen and (min-width:"#{$screen-break4}")"
+
+$landscape: "only screen and (orientation: landscape)"
+$portrait: "only screen and (orientation: portrait)"
+
+// Responsive images (ensure images don't scale beyond their parents)
+img
+	max-width: 100% // Part 1: Set a maxium relative to the parent
+	height: auto // Part 2: Scale the height according to the width, otherwise you get stretching
+	vertical-align: middle // Match vertical alignment with other comment elements
+
+// Tools
+.accessible
+	position: absolute !important
+	clip: rect(1px 1px 1px 1px) /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px)
+// Hide from screenreaders and browsers
+.hidden
+	display: none
+	visibility: hidden
+
+// WebKit bug documented here: https://bugs.webkit.org/show_bug.cgi?id=82489
+svg
+	max-height: 100%
+
+// Background size prefixes for Android 2.x
+=background-size($size)
+	+prefixer(background-size, $size, webkit spec)
+=box-shadow($size)
+	+prefixer(box-shadow, $size, webkit spec)

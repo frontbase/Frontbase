@@ -1,6 +1,6 @@
-# Frontbase
+# Frontbase :sparkles:
 
-*a starter fuel for web projects*
+*a starter fuel for web projects* :rocket:
 
 
 ## Requirements

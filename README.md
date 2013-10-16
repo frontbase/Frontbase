@@ -36,3 +36,9 @@ Follow [Frontbase ideology](https://github.com/Clevis/Clevispace/wiki/Frontbase)
 Using [StyleDocco](http://jacobrask.github.io/styledocco/) which parses stylesheet comments with markdown and generates one page per file.
 
 * `/docs` - styleguide location (build project first)
+
+## FAQ
+
+> How to make it work with *XYZ* PHP/Ruby/... framework?
+
+Just move all files to project *document_root* directory and run commands from there. Done!

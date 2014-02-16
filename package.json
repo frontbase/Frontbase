@@ -4,12 +4,12 @@
   "main": "index.html",
   "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-uglify": "~0.2.4",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-sass": "~0.5.0",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-styleguide": "~0.2.11"
+    "grunt": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-contrib-sass": "latest",
+    "grunt-contrib-clean": "latest",
+    "grunt-styleguide": "latest"
   },
   "repository": {
     "type": "git",

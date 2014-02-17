@@ -61,6 +61,23 @@ module.exports = function(grunt) {
 
 		},
 
+		browser_sync: {
+
+			dev: {
+				options: {
+					watchTask: true,
+					debugInfo: true,
+					proxy: {
+						host: 'localhost'
+					}
+				},
+				bsFiles: {
+					src: ['build/*.css', 'build/*.js']
+				}
+			}
+
+		},
+
 		watch: {
 
 			sass: {
@@ -71,13 +88,6 @@ module.exports = function(grunt) {
 			js: {
 				files: ['js/**/*.js'],
 				tasks: ['uglify:dev']
-			},
-
-			livereload: {
-				files: ['build/*.css', 'build/*.js'],
-				options: {
-					livereload: true,
-				}
 			}
 
 		},
@@ -107,11 +117,12 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-browser-sync');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-styleguide');
 
 	// Default task(s).
 	grunt.registerTask('default', ['clean:dist','sass:dist', 'uglify:dist', 'styleguide']);
-	grunt.registerTask('dev', ['sass:dev', 'uglify:dev', 'watch']);
+	grunt.registerTask('dev', ['sass:dev', 'uglify:dev', 'browser_sync:dev', 'watch']);
 
 };

@@ -10,6 +10,7 @@
     "grunt-contrib-sass": "latest",
     "grunt-contrib-clean": "latest",
     "grunt-styleguide": "latest",
+    "grunt-browser-sync": "latest",
     "bower": "latest"
   },
   "repository": {

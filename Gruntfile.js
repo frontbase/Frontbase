@@ -53,9 +53,6 @@ module.exports = function(grunt) {
 			},
 
 			dist: {
-				options: {
-					report: 'min'
-				},
 				files: JS_FILES
 			}
 

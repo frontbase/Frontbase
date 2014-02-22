@@ -2,40 +2,26 @@
 
 *a starter fuel for web projects* :rocket:
 
-
-## Requirements
-
-* [Node.js](http://nodejs.org/download)
-* [Ruby](https://www.ruby-lang.org/en/downloads) + [SASS](http://sass-lang.com/download.html)
-* [Grunt CLI](http://gruntjs.com/getting-started)
-* [Bower](http://bower.io)
-
-```sh
-gem install sass --pre
-npm install -g grunt-cli bower
-```
-
+Requirements: [Node.js](http://nodejs.org/download)
 
 ## Initialization
 
 ```sh
-npm install # installs node modules specified in package.json (mainly for Grunt build)
-bower install # installs bower libraries specified in bower.json
+npm install
 ```
+
+1. Installation of node modules (specified in package.json, mainly for Grunt build)
+2. Installation of bower packages (specified in bower.json)
+3. Production build (specified in Grunt default task)
 
 
 ## Workflow
 
 Follow [Frontbase ideology](https://github.com/Clevis/Clevispace/wiki/Frontbase) and write a perfect, well documented code
 
-* `grunt` - for project production build
-* `grunt dev` - start of development work which builds project with DEV settings and then watches for file change (livereload included)
+* `npm run-script build` - for project production build
+* `npm start` - start of development work which builds project with DEV settings and then watches for file change (browser-sync included)
 
-## Documentation
-
-Using [StyleDocco](http://jacobrask.github.io/styledocco/) which parses stylesheet comments with markdown and generates one page per file.
-
-* `/docs` - styleguide location (build project first)
 
 ## FAQ
 

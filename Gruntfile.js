@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
-	var SASS_FILES = {
-		'build/screen.css': 'sass/screen.sass'
+	var STYLE_FILES = {
+		'build/screen.css': 'styles/screen.styl'
 	};
 
 	var JS_FILES = {
@@ -19,21 +19,21 @@ module.exports = function(grunt) {
 			dist: 'build/**'
 		},
 
-		sass: {
+		stylus: {
 
 			dev: {
 				options: {
-					sourcemap: true
+					'include css': true,
+					compress: false
 				},
-				files: SASS_FILES
+				files: STYLE_FILES
 			},
 
 			dist: {
 				options: {
-					style: 'compressed',
-					noCache: true
+					'include css': true
 				},
-				files: SASS_FILES
+				files: STYLE_FILES
 			}
 
 		},
@@ -80,9 +80,9 @@ module.exports = function(grunt) {
 
 		watch: {
 
-			sass: {
-				files: 'sass/**/*.sass',
-				tasks: ['sass:dev']
+			styles: {
+				files: 'styles/**/*.styl',
+				tasks: ['stylus:dev']
 			},
 
 			js: {
@@ -90,39 +90,19 @@ module.exports = function(grunt) {
 				tasks: ['uglify:dev']
 			}
 
-		},
-
-		styleguide: {
-
-			frontend: {
-				options: {
-					name: 'Styleguide',
-					framework: {
-						name: 'styledocco'
-					},
-					template: {
-						include: ['build/screen.css']
-					}
-				},
-				files: {
-					'docs': 'sass/screen.sass'
-				}
-			}
 		}
-
 
 	});
 
 	// Load the plugins
 	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-stylus');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-browser-sync');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-styleguide');
 
-	// Default task(s).
-	grunt.registerTask('default', ['clean:dist','sass:dist', 'uglify:dist', 'styleguide']);
-	grunt.registerTask('dev', ['sass:dev', 'uglify:dev', 'browser_sync:dev', 'watch']);
+	// Register tasks
+	grunt.registerTask('default', ['clean:dist','stylus:dist', 'uglify:dist']);
+	grunt.registerTask('dev', ['stylus:dev', 'uglify:dev', 'browser_sync:dev', 'watch']);
 
 };

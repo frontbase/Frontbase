@@ -5,10 +5,10 @@
   "dependencies": {},
   "devDependencies": {
     "grunt": "latest",
+    "grunt-contrib-clean": "latest",
+    "grunt-contrib-stylus": "latest",
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-watch": "latest",
-    "grunt-contrib-sass": "latest",
-    "grunt-contrib-clean": "latest",
     "grunt-styleguide": "latest",
     "grunt-browser-sync": "latest",
     "bower": "latest"
@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/Clevis/Frontbase/issues"
   },
-  "scripts": {    
+  "scripts": {
     "postinstall": "node node_modules/bower/bin/bower install"
   }
 }

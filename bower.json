@@ -9,7 +9,6 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "latest",
-    "bourbon": "latest"
+    "jquery": "latest"
   }
 }

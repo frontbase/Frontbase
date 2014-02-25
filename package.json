@@ -11,6 +11,7 @@
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-watch": "latest",
     "grunt-browser-sync": "latest",
+    "grunt-notify": "latest",
     "bower": "latest"
   },
   "repository": {

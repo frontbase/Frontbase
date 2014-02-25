@@ -65,7 +65,7 @@ module.exports = function(grunt) {
 					watchTask: true,
 					debugInfo: true,
 					proxy: {
-						host: 'localhost'
+						host: '127.0.0.1'
 					}
 				},
 				bsFiles: {

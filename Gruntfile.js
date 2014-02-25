@@ -66,6 +66,12 @@ module.exports = function(grunt) {
 					debugInfo: true,
 					proxy: {
 						host: '127.0.0.1'
+					},
+					ghostMode: {
+						clicks: true,
+						scroll: true,
+						links: false,
+						forms: true
 					}
 				},
 				bsFiles: {

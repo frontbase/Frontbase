@@ -32,24 +32,6 @@ body
 	@-ms-viewport
 		width: 320px
 
-// Layout breakpoints
-$screen-break0 = em(320)
-$screen-break1 = em(480)
-$screen-break2 = em(768)
-$screen-break3 = em(992)
-$screen-break4 = em(1200)
-
-$screen = 'only screen'
-
-$break0 = 'only screen and (min-width: ' + $screen-break0 + ')'
-$break1 = 'only screen and (min-width: ' + $screen-break1 + ')'
-$break2 = 'only screen and (min-width: ' + $screen-break2 + ')'
-$break3 = 'only screen and (min-width: ' + $screen-break3 + ')'
-$break4 = 'only screen and (min-width: ' + $screen-break4 + ')'
-
-$landscape = 'only screen and (orientation: landscape)'
-$portrait = 'only screen and (orientation: portrait)'
-
 // Responsive images (ensure images don't scale beyond their parents)
 img
 	max-width: 100% // Part 1: Set a maxium relative to the parent
@@ -81,3 +63,17 @@ rem($size)
 		$size / $base-font-size rem
 	else
 		error('rem() must be used within a property')
+
+// Generate break variable to use in media queries
+break($width)
+	'only screen and (min-width: ' + em($width) + ')'
+
+// Layout breakpoints
+$break0 = break(320)
+$break1 = break(480)
+$break2 = break(768)
+$break3 = break(992)
+$break4 = break(1200)
+
+$landscape = 'only screen and (orientation: landscape)'
+$portrait = 'only screen and (orientation: portrait)'

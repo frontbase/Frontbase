@@ -7,14 +7,13 @@
 Requirements: [Node.js](http://nodejs.org/download)
 
 
-```sh
-npm install
-```
+`npm install` - *the one command to rule them all*
 
 1. Installation of node modules (specified in [package.json](package.json), mainly for Grunt build)
 2. Installation of bower packages (specified in [bower.json](bower.json))
 3. Production build (specified in Grunt [default task](Gruntfile.js))
 
+In case of NPM network problems try EU mirror: `npm --registry http://registry.npmjs.eu/ install`
 
 ## Workflow
 

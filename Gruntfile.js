@@ -58,7 +58,7 @@ module.exports = function(grunt) {
 
 		},
 
-		browser_sync: {
+		browserSync: {
 
 			dev: {
 				options: {
@@ -114,6 +114,6 @@ module.exports = function(grunt) {
 
 	// Register tasks
 	grunt.registerTask('default', ['clean:dist','stylus:dist', 'uglify:dist']);
-	grunt.registerTask('dev', ['stylus:dev', 'uglify:dev', 'browser_sync:dev', 'watch']);
+	grunt.registerTask('dev', ['stylus:dev', 'uglify:dev', 'browserSync:dev', 'watch']);
 
 };

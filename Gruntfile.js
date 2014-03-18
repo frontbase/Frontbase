@@ -2,14 +2,19 @@ module.exports = function(grunt) {
 
 	var STYLE_FILES = {
 		'build/screen.css': 'styles/screen.styl'
-	};
+	}
 
 	var JS_FILES = {
 		'build/app.js': [
 			'js/plugins.js',
 			'js/init.js'
 		]
-	};
+	}
+
+	var WATCH_FILES = [
+		'build/*.*',
+		'**/*.html'
+	]
 
 	// Project configuration.
 	grunt.initConfig({
@@ -43,11 +48,7 @@ module.exports = function(grunt) {
 			dev: {
 				options: {
 					compress: false,
-					mangle: false,
-					beautify: true,
-					sourceMap: function(path) {
-						return path + ".map";
-					}
+					sourceMap: true
 				},
 				files: JS_FILES
 			},
@@ -64,9 +65,14 @@ module.exports = function(grunt) {
 				options: {
 					watchTask: true,
 					debugInfo: true,
-					proxy: {
-						host: '127.0.0.1'
+					// Only static files
+					server: {
+						baseDir: '.'
 					},
+					// Dynamic files (PHP etc) - proxy to running server
+					// proxy: {
+					// 	host: 'localhost'
+					// },
 					ghostMode: {
 						clicks: true,
 						scroll: true,
@@ -75,7 +81,7 @@ module.exports = function(grunt) {
 					}
 				},
 				bsFiles: {
-					src: ['build/*.css', 'build/*.js', '*.html']
+					src: WATCH_FILES
 				}
 			}
 
@@ -94,7 +100,7 @@ module.exports = function(grunt) {
 			},
 
 			livereload: {
-				files: ['build/*.css', 'build/*.js', '*.html'],
+				files: WATCH_FILES,
 				options: {
 					livereload: true
 				}
@@ -102,18 +108,18 @@ module.exports = function(grunt) {
 
 		}
 
-	});
+	})
 
 	// Load the plugins
-	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-stylus');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-browser-sync');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-notify');
+	grunt.loadNpmTasks('grunt-contrib-clean')
+	grunt.loadNpmTasks('grunt-contrib-stylus')
+	grunt.loadNpmTasks('grunt-contrib-uglify')
+	grunt.loadNpmTasks('grunt-browser-sync')
+	grunt.loadNpmTasks('grunt-contrib-watch')
+	grunt.loadNpmTasks('grunt-notify')
 
 	// Register tasks
-	grunt.registerTask('default', ['clean:dist','stylus:dist', 'uglify:dist']);
-	grunt.registerTask('dev', ['stylus:dev', 'uglify:dev', 'browserSync:dev', 'watch']);
+	grunt.registerTask('default', ['clean:dist','stylus:dist', 'uglify:dist'])
+	grunt.registerTask('dev', ['stylus:dev', 'uglify:dev', 'browserSync:dev', 'watch'])
 
-};
+}

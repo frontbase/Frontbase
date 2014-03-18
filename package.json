@@ -13,7 +13,7 @@
 	"devDependencies": {
 		"grunt-contrib-watch": "latest",
 		"grunt-browser-sync": "latest",
-		"grunt-notify": "latest",
+		"grunt-notify": "latest"
 	},
 	"repository": {
 		"type": "git",

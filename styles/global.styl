@@ -1,40 +1,39 @@
 body
-	font-family: $font-family-base
-	color: $text-color
-	background: $text-back
+	font-family $font-family-base
+	line-height $gratio
+	color $text-color
+	background $text-back
 a
-	color: $c-main
+	color $c-main
 
 h1, h2, h3, h4, h5, h6
-	color: #000
-	font-family: $font-family-head
-	font-weight: normal
-	line-height: 1
-	margin: 0 0 0.5em 0
-	text-rendering: optimizeLegibility
+	font-family $font-family-head
+	font-weight normal
+	line-height 1
+	margin 0 0 $spacing 0
+	text-rendering optimizeLegibility
 h1
-	font-size: 2em
-	margin-bottom: 1em
+	font-size $gratio * 4em
 h2
-	font-size: 1.5em
+	font-size $gratio * 3em
 h3
-	font-size: 1.4em
+	font-size $gratio * 2em
 h4
-	font-size: 1.3em
-h5
-	font-size: 1.2em
+	font-size $gratio * 1em
+h5,
 h6
-	font-size: 1em
+	font-size 1em
+	font-weight bold
+
 p
-	font-size: em(15)
-	margin: 0 0 em($spacingN, 15)
+	margin 0 0 $spacing
 blockquote
-	font-style: italic
+	font-style italic
 ul, li
-	margin: 0
-	padding: 0
+	margin 0
+	padding 0
 
 .fleft
-	float: left
+	float left
 .fright
-	float: right
+	float right

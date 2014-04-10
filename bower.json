@@ -9,6 +9,8 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "latest"
+    "jquery": "latest",
+    "respond": "latest",
+    "html5shiv": "latest"
   }
 }

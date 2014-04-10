@@ -70,9 +70,7 @@ module.exports = function(grunt) {
 						baseDir: '.'
 					},
 					// Dynamic files (PHP etc) - proxy to running server
-					// proxy: {
-					// 	host: 'localhost'
-					// },
+					// proxy: 'localhost',
 					ghostMode: {
 						clicks: true,
 						scroll: true,

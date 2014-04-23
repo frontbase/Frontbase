@@ -29,6 +29,7 @@
   "scripts": {
     "start": "grunt dev",
     "prepublish": "bower install --config.interactive=false && grunt",
-    "build": "grunt"
+    "build": "grunt",
+    "test": "grunt"
   }
 }

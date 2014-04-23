@@ -12,16 +12,16 @@ module.exports = function(grunt) {
 	}
 
 	var WATCH_FILES = [
-		'build/*.*',
-		'**/*.html'
+		'build/*'
 	]
 
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 
+		//
 		clean: {
-			dist: 'build/**'
+			dist: 'build/*'
 		},
 
 		stylus: {
@@ -59,6 +59,17 @@ module.exports = function(grunt) {
 
 		},
 
+		'compile-handlebars': {
+
+			dist: {
+				template: 'templates/*.hbs',
+				templateData: 'templates/data.json',
+				partials: 'templates/partials/*.hbs',
+				output: 'build/*.html'
+			}
+
+		},
+
 		browserSync: {
 
 			dev: {
@@ -67,7 +78,8 @@ module.exports = function(grunt) {
 					debugInfo: true,
 					// Only static files
 					server: {
-						baseDir: '.'
+						baseDir: '.',
+						index: 'build/index.html'
 					},
 					// Dynamic files (PHP etc) - proxy to running server
 					// proxy: 'localhost',
@@ -89,12 +101,17 @@ module.exports = function(grunt) {
 
 			styles: {
 				files: 'styles/**/*.styl',
-				tasks: ['stylus:dev']
+				tasks: 'stylus:dev'
 			},
 
 			js: {
-				files: ['js/**/*.js'],
-				tasks: ['uglify:dev']
+				files: 'js/**/*.js',
+				tasks: 'uglify:dev'
+			},
+
+			templates: {
+				files: 'templates/**',
+				tasks: 'compile-handlebars:dist'
 			},
 
 			livereload: {
@@ -109,15 +126,16 @@ module.exports = function(grunt) {
 	})
 
 	// Load the plugins
+	grunt.loadNpmTasks('grunt-browser-sync')
+	grunt.loadNpmTasks('grunt-compile-handlebars')
 	grunt.loadNpmTasks('grunt-contrib-clean')
 	grunt.loadNpmTasks('grunt-contrib-stylus')
 	grunt.loadNpmTasks('grunt-contrib-uglify')
-	grunt.loadNpmTasks('grunt-browser-sync')
 	grunt.loadNpmTasks('grunt-contrib-watch')
 	grunt.loadNpmTasks('grunt-notify')
 
 	// Register tasks
-	grunt.registerTask('default', ['clean:dist','stylus:dist', 'uglify:dist'])
-	grunt.registerTask('dev', ['stylus:dev', 'uglify:dev', 'browserSync:dev', 'watch'])
+	grunt.registerTask('default', ['clean:dist', 'compile-handlebars:dist', 'stylus:dist', 'uglify:dist'])
+	grunt.registerTask('dev', ['clean:dist', 'compile-handlebars:dist', 'stylus:dev', 'uglify:dev', 'browserSync:dev', 'watch'])
 
 }

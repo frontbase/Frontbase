@@ -1,32 +1,33 @@
 {
-	"name": "Frontbase",
-	"version": "0.2.0",
-	"main": "index.html",
-	"dependencies": {
-		"grunt": "latest",
-		"grunt-cli": "latest",
-		"grunt-contrib-clean": "latest",
-		"grunt-contrib-stylus": "latest",
-		"grunt-contrib-uglify": "latest",
-		"bower": "latest"
-		},
-	"devDependencies": {
-		"grunt-contrib-watch": "latest",
-		"grunt-browser-sync": "latest",
-		"grunt-notify": "latest"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/Clevis/Frontbase.git"
-	},
-	"author": "Clevis s.r.o. | Matej Simek",
-	"readmeFilename": "README.md",
-	"bugs": {
-		"url": "https://github.com/Clevis/Frontbase/issues"
-	},
-	"scripts": {
-		"start": "grunt dev",
-		"prepublish": "bower install --config.interactive=false && grunt",
-		"build": "grunt"
-	}
+  "name": "Frontbase",
+  "version": "0.2.0",
+  "main": "index.html",
+  "dependencies": {
+    "grunt": "latest",
+    "grunt-cli": "latest",
+    "grunt-compile-handlebars": "latest",
+    "grunt-contrib-clean": "latest",
+    "grunt-contrib-stylus": "latest",
+    "grunt-contrib-uglify": "latest",
+    "bower": "latest"
+  },
+  "devDependencies": {
+    "grunt-contrib-watch": "latest",
+    "grunt-browser-sync": "latest",
+    "grunt-notify": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Clevis/Frontbase.git"
+  },
+  "author": "Clevis s.r.o. | Matej Simek",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/Clevis/Frontbase/issues"
+  },
+  "scripts": {
+    "start": "grunt dev",
+    "prepublish": "bower install --config.interactive=false && grunt",
+    "build": "grunt"
+  }
 }

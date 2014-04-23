@@ -15,6 +15,9 @@ module.exports = function(grunt) {
 		'build/*'
 	]
 
+	// Additional sources to hash filenames
+	var HASH_SOURCES = []
+
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -66,6 +69,23 @@ module.exports = function(grunt) {
 				templateData: 'templates/data.json',
 				partials: 'templates/partials/*.hbs',
 				output: 'build/*.html'
+			}
+
+		},
+
+		hashres: {
+
+			dist: {
+				src: (function() {
+					for(style in STYLE_FILES){
+						HASH_SOURCES.push(style)
+					}
+					for(script in JS_FILES){
+						HASH_SOURCES.push(script)
+					}
+					return HASH_SOURCES
+				})(),
+				dest: 'build/*.html'
 			}
 
 		},
@@ -132,10 +152,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-stylus')
 	grunt.loadNpmTasks('grunt-contrib-uglify')
 	grunt.loadNpmTasks('grunt-contrib-watch')
+	grunt.loadNpmTasks('grunt-hashres')
 	grunt.loadNpmTasks('grunt-notify')
 
 	// Register tasks
-	grunt.registerTask('default', ['clean:dist', 'compile-handlebars:dist', 'stylus:dist', 'uglify:dist'])
+	grunt.registerTask('default', ['clean:dist', 'compile-handlebars:dist', 'stylus:dist', 'uglify:dist', 'hashres:dist'])
 	grunt.registerTask('dev', ['clean:dist', 'compile-handlebars:dist', 'stylus:dev', 'uglify:dev', 'browserSync:dev', 'watch'])
 
 }

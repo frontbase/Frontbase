@@ -119,6 +119,10 @@ module.exports = function(grunt) {
 
 		watch: {
 
+			options: {
+				spawn: false
+			},
+
 			styles: {
 				files: 'styles/**/*.styl',
 				tasks: 'stylus:dev'

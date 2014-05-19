@@ -1,32 +1,40 @@
+/**
+ * Configuration part of following grunt tasks
+ */
+
+var STYLE_FILES = [
+	'styles/screen.styl'
+]
+
+var JS_FILES = [
+	'js/plugins.js',
+	'js/init.js'
+]
+
+var DIST_FOLDER = 'build'
+
+var HASH_SOURCES = [
+	DIST_FOLDER + '/*.css',
+	DIST_FOLDER + '/*.js'
+]
+
+var WATCH_FILES = [
+	DIST_FOLDER + '/*'
+]
+
+
+/**
+ * Grunt project itself with defined tasks and theirs options
+ */
 module.exports = function(grunt) {
-
-	var STYLE_FILES = {
-		'build/screen.css': 'styles/screen.styl'
-	}
-
-	var JS_FILES = {
-		'build/app.js': [
-			'js/plugins.js',
-			'js/init.js'
-		]
-	}
-
-	var WATCH_FILES = [
-		'build/*'
-	]
-
-	// Additional sources to hash filenames
-	var HASH_SOURCES = []
-
-	// Project configuration.
 	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
 
-		//
+		// Clean dist folder from obsolote files
 		clean: {
-			dist: 'build/*'
+			dist: DIST_FOLDER + '/*'
 		},
 
+		// Compile Stylus styles into CSS
 		stylus: {
 
 			dev: {
@@ -34,18 +42,27 @@ module.exports = function(grunt) {
 					'include css': true,
 					compress: false
 				},
-				files: STYLE_FILES
+				expand: true,
+				flatten: true,
+				src: STYLE_FILES,
+				dest: DIST_FOLDER + '/',
+				ext: '.css'
 			},
 
 			dist: {
 				options: {
 					'include css': true
 				},
-				files: STYLE_FILES
+				expand: true,
+				flatten: true,
+				src: STYLE_FILES,
+				dest: DIST_FOLDER + '/',
+				ext: '.css'
 			}
 
 		},
 
+		// Concat and minify JavaScript files to signel app.js file
 		uglify: {
 
 			dev: {
@@ -53,43 +70,48 @@ module.exports = function(grunt) {
 					compress: false,
 					sourceMap: true
 				},
-				files: JS_FILES
+				files: (function() {
+					var files = {}
+					files[DIST_FOLDER + '/app.js'] = JS_FILES
+					return files
+				})()
 			},
 
 			dist: {
-				files: JS_FILES
+				files: (function() {
+					var files = {}
+					files[DIST_FOLDER + '/app.js'] = JS_FILES
+					return files
+				})()
 			}
 
 		},
 
+		// Generate static HTML files from Handlebars templates
 		'compile-handlebars': {
 
 			dist: {
 				template: 'templates/*.hbs',
 				templateData: 'templates/data.json',
 				partials: 'templates/partials/*.hbs',
-				output: 'build/*.html'
+				output: DIST_FOLDER + '/*.html'
 			}
 
 		},
 
+
+		// Rename resource files based on theirs content to prevent cache colisions
 		hashres: {
 
 			dist: {
-				src: (function() {
-					for(style in STYLE_FILES){
-						HASH_SOURCES.push(style)
-					}
-					for(script in JS_FILES){
-						HASH_SOURCES.push(script)
-					}
-					return HASH_SOURCES
-				})(),
-				dest: 'build/*.html'
+				// expand: true,
+				src: HASH_SOURCES,
+				dest: DIST_FOLDER + '/*.html'
 			}
 
 		},
 
+		// Development mode with resources auto reload and browser actions synchronizations
 		browserSync: {
 
 			dev: {
@@ -99,7 +121,7 @@ module.exports = function(grunt) {
 					// Only static files
 					server: {
 						baseDir: '.',
-						index: 'build/index.html'
+						index: DIST_FOLDER + '/index.html'
 					},
 					// Dynamic files (PHP etc) - proxy to running server
 					// proxy: 'localhost',
@@ -117,6 +139,7 @@ module.exports = function(grunt) {
 
 		},
 
+		// Watch sources for change and compile them. Starts Livereload server as fallback of browserSync.
 		watch: {
 
 			options: {
@@ -149,7 +172,7 @@ module.exports = function(grunt) {
 
 	})
 
-	// Load the plugins
+	// Load plugins
 	grunt.loadNpmTasks('grunt-browser-sync')
 	grunt.loadNpmTasks('grunt-compile-handlebars')
 	grunt.loadNpmTasks('grunt-contrib-clean')

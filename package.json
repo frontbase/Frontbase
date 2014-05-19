@@ -8,6 +8,7 @@
     "grunt-cli": "latest",
     "grunt-compile-handlebars": "latest",
     "grunt-contrib-clean": "latest",
+    "grunt-contrib-cssmin": "latest",
     "grunt-contrib-stylus": "latest",
     "grunt-contrib-uglify": "latest",
     "grunt-hashres": "latest"

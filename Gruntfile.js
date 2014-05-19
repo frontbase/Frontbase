@@ -99,6 +99,15 @@ module.exports = function(grunt) {
 
 		},
 
+		// Minify CSS even more, every byte counts
+		cssmin: {
+			dist: {
+				expand: true,
+				cwd: DIST_FOLDER + '/',
+				src: '*.css',
+				dest: DIST_FOLDER + '/'
+			}
+		},
 
 		// Rename resource files based on theirs content to prevent cache colisions
 		hashres: {
@@ -176,6 +185,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-browser-sync')
 	grunt.loadNpmTasks('grunt-compile-handlebars')
 	grunt.loadNpmTasks('grunt-contrib-clean')
+	grunt.loadNpmTasks('grunt-contrib-cssmin')
 	grunt.loadNpmTasks('grunt-contrib-stylus')
 	grunt.loadNpmTasks('grunt-contrib-uglify')
 	grunt.loadNpmTasks('grunt-contrib-watch')
@@ -183,7 +193,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-notify')
 
 	// Register tasks
-	grunt.registerTask('default', ['clean:dist', 'compile-handlebars:dist', 'stylus:dist', 'uglify:dist', 'hashres:dist'])
+	grunt.registerTask('default', ['clean:dist', 'compile-handlebars:dist', 'stylus:dist', 'uglify:dist', 'cssmin:dist', 'hashres:dist'])
 	grunt.registerTask('dev', ['clean:dist', 'compile-handlebars:dist', 'stylus:dev', 'uglify:dev', 'browserSync:dev', 'watch'])
 
 }

@@ -30,8 +30,6 @@ In case of NPM network problems try EU mirror: `npm --registry http://registry.n
 
 ## Workflow
 
-Follow [Code Conventions](https://github.com/Clevis/Frontbase/wiki/Code-Conventions) and write a perfect, well documented code.
-
 * `npm run-script build` - for project production build
 * `npm start` - start of development work which builds project with DEV settings and then watches for file change
 

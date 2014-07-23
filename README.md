@@ -39,3 +39,8 @@ In case of NPM network problems try EU mirror: `npm --registry http://registry.n
 > How to make it work with *XYZ* PHP/Ruby/... framework?
 
 Just move all files to project *document_root* directory and run commands from there. Done!
+
+
+## Copyright
+
+Copyright 2011-2014 by Clevis s.r.o. Code released under the [the MIT license](LICENSE).

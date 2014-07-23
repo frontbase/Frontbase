@@ -43,4 +43,4 @@ Just move all files to project *document_root* directory and run commands from t
 
 ## Copyright
 
-Copyright 2011-2014 by Clevis s.r.o. Code released under the [the MIT license](LICENSE).
+Copyright 2011-2014 by Clevis s.r.o. Code released under [the MIT license](LICENSE).

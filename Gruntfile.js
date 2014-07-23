@@ -7,8 +7,7 @@ var STYLE_FILES = [
 ]
 
 var JS_FILES = [
-	'js/plugins.js',
-	'js/init.js'
+	'js/index.js'
 ]
 
 var DIST_FOLDER = 'build'
@@ -63,26 +62,27 @@ module.exports = function(grunt) {
 		},
 
 		// Concat and minify JavaScript files to signel app.js file
-		uglify: {
+		browserify: {
 
 			dev: {
 				options: {
-					compress: false,
-					sourceMap: true
+					bundleOptions: {
+						debug: true
+					},
+					transform: ['browserify-shim'],
+					external: ['jquery']
 				},
-				files: (function() {
-					var files = {}
-					files[DIST_FOLDER + '/app.js'] = JS_FILES
-					return files
-				})()
+				src: JS_FILES,
+				dest: DIST_FOLDER + '/app.js'
 			},
 
 			dist: {
-				files: (function() {
-					var files = {}
-					files[DIST_FOLDER + '/app.js'] = JS_FILES
-					return files
-				})()
+				options: {
+					transform: ['browserify-shim', 'uglifyify'],
+					external: ['jquery']
+				},
+				src: JS_FILES,
+				dest: DIST_FOLDER + '/app.js'
 			}
 
 		},
@@ -162,7 +162,7 @@ module.exports = function(grunt) {
 
 			js: {
 				files: 'js/**/*.js',
-				tasks: 'uglify:dev'
+				tasks: 'browserify:dev'
 			},
 
 			templates: {
@@ -182,18 +182,18 @@ module.exports = function(grunt) {
 	})
 
 	// Load plugins
+	grunt.loadNpmTasks('grunt-browserify')
 	grunt.loadNpmTasks('grunt-browser-sync')
-	grunt.loadNpmTasks('grunt-compile-handlebars')
 	grunt.loadNpmTasks('grunt-contrib-clean')
 	grunt.loadNpmTasks('grunt-contrib-cssmin')
+	grunt.loadNpmTasks('grunt-compile-handlebars')
 	grunt.loadNpmTasks('grunt-contrib-stylus')
-	grunt.loadNpmTasks('grunt-contrib-uglify')
 	grunt.loadNpmTasks('grunt-contrib-watch')
 	grunt.loadNpmTasks('grunt-hashres')
 	grunt.loadNpmTasks('grunt-notify')
 
 	// Register tasks
-	grunt.registerTask('default', ['clean:dist', 'compile-handlebars:dist', 'stylus:dist', 'uglify:dist', 'cssmin:dist', 'hashres:dist'])
-	grunt.registerTask('dev', ['clean:dist', 'compile-handlebars:dist', 'stylus:dev', 'uglify:dev', 'browserSync:dev', 'watch'])
+	grunt.registerTask('default', ['clean:dist', 'compile-handlebars:dist', 'stylus:dist', 'browserify:dist', 'cssmin:dist', 'hashres:dist'])
+	grunt.registerTask('dev', ['clean:dist', 'compile-handlebars:dist', 'stylus:dev', 'browserify:dev', 'browserSync:dev', 'watch'])
 
 }

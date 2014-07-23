@@ -8,7 +8,7 @@
 <table>
 <tr><td><a href="http://handlebarsjs.com">Handlebars</a></td><td>Semantic templates</td></tr>
 <tr><td><a href="http://learnboost.github.io/stylus">Stylus</a></td><td>Expressive, dynamic and robust CSS preprocessor</td></tr>
-<tr><td><a href="https://github.com/mishoo/UglifyJS2">UglifyJS</a></td><td>JavaScript minification</td></tr>
+<tr><td><a href="http://browserify.org">Browserify</a></td><td>JavaScript bundling with require() in the browser</td></tr>
 <tr><td><a href="http://browsersync.io">BrowserSync</a></td><td>Time-saving synchronised browser testing</td></tr>
 <tr><td><a href="http://gruntjs.com">Grunt</a></td><td>Automated build tasks</td></tr>
 <tr><td><a href="http://bower.io">Bower</a></td><td>Package manager for the web</td></tr>

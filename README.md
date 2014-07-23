@@ -1,7 +1,6 @@
-# Frontbase :sparkles:
+# Frontbase 
 
-*a starter fuel for web projects* :rocket:
-
+Preconfigured front-end devstack to the absolute perfection... like the HTML5 Boilerplate on steroids. Fully automated to save your precious time. Ready for any type of web project.
 
 ## Engines
 

@@ -1,7 +1,16 @@
 .site
-	&-header
-	&-content
-		max-width 50em
-		margin $spacing auto
+	&-header,
+	&-content,
 	&-footer
-		//
+		max-width 45em
+		margin $spacing auto
+		padding 0 20px
+
+		h1, h2, h3
+			margin-top $spacing * 2
+
+	&-footer
+		margin-top $spacing * 3
+		text-align center
+		color #999
+		font-size 0.8em

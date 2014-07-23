@@ -15,9 +15,9 @@ h1, h2, h3, h4, h5, h6
 h1
 	font-size $gratio * 4em
 h2
-	font-size $gratio * 3em
+	font-size $gratio * 1.5em
 h3
-	font-size $gratio * 2em
+	font-size $gratio * 0.8em
 h4
 	font-size $gratio * 1em
 h5,
@@ -32,6 +32,19 @@ blockquote
 ul, li
 	margin 0
 	padding 0
+code
+	display block
+	white-space nowrap
+	max-width 100%
+	overflow auto
+	padding ($padding/2) $padding
+	background #eee
+	color #000
+
+table
+	width 100%
+td
+	padding ($padding/4) ($padding/2)
 
 .fleft
 	float left

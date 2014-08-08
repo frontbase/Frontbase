@@ -66,25 +66,30 @@ module.exports = function(grunt) {
 		// Concat and minify JavaScript files to signel app.js file
 		browserify: {
 
+			options: {
+				transform: ['browserify-shim', 'uglifyify'],
+				external: ['jquery']
+			},
+
 			dev: {
 				options: {
 					bundleOptions: {
 						debug: true
 					},
-					transform: ['browserify-shim'],
-					external: ['jquery']
+					transform: ['browserify-shim']
 				},
 				src: JS_FILES,
 				dest: DIST_FOLDER + '/app.js'
 			},
 
 			dist: {
-				options: {
-					transform: ['browserify-shim', 'uglifyify'],
-					external: ['jquery']
-				},
 				src: JS_FILES,
 				dest: DIST_FOLDER + '/app.js'
+			},
+
+			ie8: {
+				src: 'js/ie8.js',
+				dest: DIST_FOLDER + '/ie8.js'
 			}
 
 		},
@@ -135,8 +140,7 @@ module.exports = function(grunt) {
 					debugInfo: true,
 					// Only static files
 					server: {
-						baseDir: '.',
-						index: DIST_FOLDER + '/index.html'
+						baseDir: 'build'
 					},
 					// Dynamic files (PHP etc) - proxy to running server
 					// proxy: 'localhost',
@@ -199,7 +203,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-notify')
 
 	// Register tasks
-	grunt.registerTask('default', ['clean:dist', 'assemble:dist', 'stylus:dist', 'browserify:dist', 'cssmin:dist', 'hashres:dist'])
-	grunt.registerTask('dev', ['clean:dist', 'assemble:dist', 'stylus:dev', 'browserify:dev', 'browserSync:dev', 'watch'])
+	grunt.registerTask('default', ['clean:dist', 'assemble:dist', 'stylus:dist', 'browserify:dist', 'browserify:ie8', 'cssmin:dist', 'hashres:dist'])
+	grunt.registerTask('dev', ['clean:dist', 'assemble:dist', 'stylus:dev', 'browserify:dev', 'browserify:ie8', 'browserSync:dev', 'watch'])
 
 }

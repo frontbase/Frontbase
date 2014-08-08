@@ -35,6 +35,13 @@ module.exports = function(grunt) {
 			dist: DIST_FOLDER + '/*'
 		},
 
+		copy: {
+			images: {
+				src: 'img/**',
+				dest: DIST_FOLDER + '/'
+			}
+		},
+
 		// Compile Stylus styles into CSS
 		stylus: {
 
@@ -165,6 +172,11 @@ module.exports = function(grunt) {
 				spawn: false
 			},
 
+			images: {
+				files: 'img/*',
+				tasks: 'copy:images'
+			},
+
 			styles: {
 				files: 'styles/**/*.styl',
 				tasks: 'stylus:dev'
@@ -196,6 +208,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-browser-sync')
 	grunt.loadNpmTasks('grunt-browserify')
 	grunt.loadNpmTasks('grunt-contrib-clean')
+	grunt.loadNpmTasks('grunt-contrib-copy')
 	grunt.loadNpmTasks('grunt-contrib-cssmin')
 	grunt.loadNpmTasks('grunt-contrib-stylus')
 	grunt.loadNpmTasks('grunt-contrib-watch')
@@ -203,7 +216,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-notify')
 
 	// Register tasks
-	grunt.registerTask('default', ['clean:dist', 'assemble:dist', 'stylus:dist', 'browserify:dist', 'browserify:ie8', 'cssmin:dist', 'hashres:dist'])
-	grunt.registerTask('dev', ['clean:dist', 'assemble:dist', 'stylus:dev', 'browserify:dev', 'browserify:ie8', 'browserSync:dev', 'watch'])
+	grunt.registerTask('default', ['clean:dist', 'copy:images', 'assemble:dist', 'stylus:dist', 'browserify:dist', 'browserify:ie8', 'cssmin:dist', 'hashres:dist'])
+	grunt.registerTask('dev', ['clean:dist', 'copy:images', 'assemble:dist', 'stylus:dev', 'browserify:dev', 'browserify:ie8', 'browserSync:dev', 'watch'])
 
 }

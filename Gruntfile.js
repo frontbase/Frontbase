@@ -1,3 +1,5 @@
+var fs = require("fs")
+
 /**
  * Configuration part of following grunt tasks
  */
@@ -88,15 +90,19 @@ module.exports = function(grunt) {
 		},
 
 		// Generate static HTML files from Handlebars templates
-		'compile-handlebars': {
-
+		assemble: {
+			options: {
+				data: 'templates/_data/**/*.json',
+				layoutdir: 'templates/_layouts',
+				layoutext: '.hbs',
+				layout: 'default',
+				partials: 'templates/_partials/**/*.hbs'
+			},
 			dist: {
-				template: 'templates/*.hbs',
-				templateData: 'templates/data.json',
-				partials: 'templates/partials/*.hbs',
-				output: DIST_FOLDER + '/*.html'
+				files: {
+					'build/': ['templates/*.hbs']
+				}
 			}
-
 		},
 
 		// Minify CSS even more, every byte counts
@@ -167,7 +173,7 @@ module.exports = function(grunt) {
 
 			templates: {
 				files: 'templates/**',
-				tasks: 'compile-handlebars:dist'
+				tasks: 'assemble:dist'
 			},
 
 			livereload: {
@@ -182,18 +188,18 @@ module.exports = function(grunt) {
 	})
 
 	// Load plugins
-	grunt.loadNpmTasks('grunt-browserify')
+	grunt.loadNpmTasks('grunt-assemble')
 	grunt.loadNpmTasks('grunt-browser-sync')
+	grunt.loadNpmTasks('grunt-browserify')
 	grunt.loadNpmTasks('grunt-contrib-clean')
 	grunt.loadNpmTasks('grunt-contrib-cssmin')
-	grunt.loadNpmTasks('grunt-compile-handlebars')
 	grunt.loadNpmTasks('grunt-contrib-stylus')
 	grunt.loadNpmTasks('grunt-contrib-watch')
 	grunt.loadNpmTasks('grunt-hashres')
 	grunt.loadNpmTasks('grunt-notify')
 
 	// Register tasks
-	grunt.registerTask('default', ['clean:dist', 'compile-handlebars:dist', 'stylus:dist', 'browserify:dist', 'cssmin:dist', 'hashres:dist'])
-	grunt.registerTask('dev', ['clean:dist', 'compile-handlebars:dist', 'stylus:dev', 'browserify:dev', 'browserSync:dev', 'watch'])
+	grunt.registerTask('default', ['clean:dist', 'assemble:dist', 'stylus:dist', 'browserify:dist', 'cssmin:dist', 'hashres:dist'])
+	grunt.registerTask('dev', ['clean:dist', 'assemble:dist', 'stylus:dev', 'browserify:dev', 'browserSync:dev', 'watch'])
 
 }

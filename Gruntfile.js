@@ -80,9 +80,7 @@ module.exports = function(grunt) {
 
 			dev: {
 				options: {
-					bundleOptions: {
-						debug: true
-					},
+					debug: true,
 					transform: ['browserify-shim']
 				},
 				src: JS_FILES,
